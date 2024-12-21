@@ -1,14 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ManagementSystem.Controllers
 {
     public class HomeController : Controller
     {
-        ManagementSystemEntities entities = new ManagementSystemEntities();
+        private ManagementSystemEntities entities = new ManagementSystemEntities();
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                entities.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         public ActionResult Index()
         {
@@ -25,43 +32,74 @@ namespace ManagementSystem.Controllers
         [HttpPost]
         public ActionResult Create(Employee model)
         {
-            entities.Employees.Add(model);
-            entities.SaveChanges();
-            ViewBag.Message = "Data Insert Successfully";
-            return View();
+            if (ModelState.IsValid)
+            {
+                entities.Employees.Add(model);
+                entities.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var data = entities.Employees.Where(x => x.EmployeeID == id).FirstOrDefault();
+            var data = entities.Employees.FirstOrDefault(x => x.EmployeeID == id);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
             return View(data);
         }
 
         [HttpPost]
         public ActionResult Edit(Employee model)
         {
-            var data = entities.Employees.Where(x => x.EmployeeID == model.EmployeeID).FirstOrDefault();
-            if (data != null)
+            if (ModelState.IsValid)
             {
+                var data = entities.Employees.FirstOrDefault(x => x.EmployeeID == model.EmployeeID);
+                if (data == null)
+                {
+                    return HttpNotFound();
+                }
+
                 data.FirstName = model.FirstName;
                 data.LastName = model.LastName;
                 data.Email = model.Email;
                 data.PhoneNumber = model.PhoneNumber;
                 data.CreatedDate = model.CreatedDate;
+                entities.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("index");
+            return View(model);
         }
 
         public ActionResult Delete(int id)
         {
-            var data = entities.Employees.Where(x => x.EmployeeID == id).FirstOrDefault();
+            var data = entities.Employees.FirstOrDefault(x => x.EmployeeID == id);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
             entities.Employees.Remove(data);
             entities.SaveChanges();
-            ViewBag.Message = "Record Delete Successfully";
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index");
+            }
 
+            var data = entities.Employees.FirstOrDefault(x => x.EmployeeID == id.Value);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(data);
+        }
     }
 }
