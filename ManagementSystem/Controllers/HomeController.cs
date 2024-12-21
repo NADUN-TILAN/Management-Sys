@@ -37,6 +37,9 @@ namespace ManagementSystem.Controllers
             {
                 entities.Employees.Add(model);
                 entities.SaveChanges();
+
+                // Store a success message in TempData
+                TempData["SuccessMessage"] = "Employee created successfully!";
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -70,6 +73,7 @@ namespace ManagementSystem.Controllers
                 data.PhoneNumber = model.PhoneNumber;
                 data.CreatedDate = model.CreatedDate;
                 entities.SaveChanges();
+                TempData["SuccessMessage"] = "Employee updated successfully!";
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -84,6 +88,7 @@ namespace ManagementSystem.Controllers
             }
             entities.Employees.Remove(data);
             entities.SaveChanges();
+            TempData["SuccessMessage"] = "Employee deleted successfully!";
             return RedirectToAction("Index");
         }
 
