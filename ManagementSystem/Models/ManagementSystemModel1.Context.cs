@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ManagementSystem
+namespace ManagementSystem.Models
 {
     using System;
     using System.Data.Entity;

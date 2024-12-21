@@ -7,11 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ManagementSystem
+namespace ManagementSystem.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetAllEmployees_Result
+    public partial class Employee
     {
         public int EmployeeID { get; set; }
         public string FirstName { get; set; }

@@ -129,26 +129,26 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Employee.cs">
+    <Compile Include="Models\Employee.cs">
       <DependentUpon>ManagementSystemModel1.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetAllEmployees_Result.cs">
+    <Compile Include="Models\GetAllEmployees_Result.cs">
       <DependentUpon>ManagementSystemModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ManagementSystemModel1.Context.cs">
+    <Compile Include="Models\ManagementSystemModel1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ManagementSystemModel1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ManagementSystemModel1.cs">
+    <Compile Include="Models\ManagementSystemModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ManagementSystemModel1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ManagementSystemModel1.Designer.cs">
+    <Compile Include="Models\ManagementSystemModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ManagementSystemModel1.edmx</DependentUpon>
@@ -164,23 +164,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ManagementSystemModel1.Context.tt">
+    <Content Include="Models\ManagementSystemModel1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ManagementSystemModel1.Context.cs</LastGenOutput>
       <DependentUpon>ManagementSystemModel1.edmx</DependentUpon>
     </Content>
-    <Content Include="ManagementSystemModel1.tt">
+    <Content Include="Models\ManagementSystemModel1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ManagementSystemModel1.edmx</DependentUpon>
       <LastGenOutput>ManagementSystemModel1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ManagementSystemModel1.edmx">
+    <EntityDeploy Include="Models\ManagementSystemModel1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ManagementSystemModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ManagementSystemModel1.edmx.diagram">
+    <Content Include="Models\ManagementSystemModel1.edmx.diagram">
       <DependentUpon>ManagementSystemModel1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -215,7 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
