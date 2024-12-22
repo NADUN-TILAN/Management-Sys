@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ManagementSystem.Models.Employee>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Main Page";
 }
 
 @if (TempData["SuccessMessage"] != null)
@@ -11,10 +11,10 @@
     </script>
 }
 
-<h2>Index</h2>
+<h2>Employees Details</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Employee", "Create")
 </p>
 <table class="table">
     <tr>
